@@ -9,14 +9,19 @@
 #import "PLCPlaceMapper.h"
 #import "PLCPlace.h"
 
+NSString *const APIKey = @"AIzaSyBhpEhL8vvERVuY9ynrHuElB7kEKdWyiHI";
+
 @implementation PLCPlaceMapper
 
 + (PLCPlace *)placeWithDictionary:(NSDictionary *)dictionary
 {
     PLCPlace *result = [PLCPlace new];
     NSString *name = dictionary[@"name"] ? : @"";
+    NSString *address = dictionary[@"formatted_address"] ? : @"";
     
     result.name = name;
+    result.address = address;
+    
     NSArray *photos = dictionary[@"photos"];
     
     if (photos.count == 0) {
@@ -24,9 +29,17 @@
         return result;
     }
     
-    NSDictionary *photo = photos.firstObject;
-    result.imageURL = photo[@"reference"];
+    NSLog(@"LOLO");
     
+    NSDictionary *photo = photos.firstObject;
+    NSString *photoRef = photo[@"photo_reference"] ? : @"";
+    if (![photoRef isEqualToString:@""]) {
+        result.imageURL = [NSString stringWithFormat:@"https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=%@&key=%@", photoRef, APIKey];
+    } else {
+        result.imageURL = nil;
+    }
+    
+    NSLog(@"result URL: %@", result.imageURL);
 
     return result;
 }

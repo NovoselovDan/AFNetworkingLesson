@@ -72,4 +72,47 @@ NSString *const PLCGoogleAPIKey = @"AIzaSyBhpEhL8vvERVuY9ynrHuElB7kEKdWyiHI";
                      failure:fail];
 }
 
+- (void)getNearbyPlacesForKeyword:(NSString *)keyword success:(PLCSuccessBlock)successBlock failure:(PLCFailureBlock)failureBlock {
+    NSDictionary *params = @{
+                             @"key": PLCGoogleAPIKey,
+                             @"query": keyword
+//                             @"location": stringFromCoordinate(location),
+//                             @"radius": @(1000)
+                             };
+    
+    void(^success)(AFHTTPRequestOperation *, id) =
+    ^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
+        NSMutableArray *placesModels = [NSMutableArray new];
+        
+        NSString *responseStatus = responseObject[@"status"];
+        
+        if ([responseStatus isEqualToString:@"OK"]) {
+            NSLog(@"JSON:\n%@", responseObject);
+            NSArray *results = responseObject[@"results"];
+            if (results.count == 0) {
+                if (successBlock) {
+                    successBlock(@[]);
+                }
+            }
+            for (NSDictionary *placeDict in results) {
+                [placesModels addObject:[PLCPlaceMapper placeWithDictionary:placeDict]];
+            }
+            if (successBlock) {
+                successBlock([placesModels copy]);
+            }
+        } else {
+            failureBlock(operation.error);
+        }
+    };
+    
+    void(^fail)(id, NSError *) = ^(AFHTTPRequestOperation * _Nullable operation, NSError * _Nonnull error) {
+        NSLog(@"%@", error);
+    };
+    
+    [self.requestManager GET:[NSString stringWithFormat:@"%@%@",PLCGoogleBaseURL, @"textsearch/json"]
+                  parameters:params
+                     success:success
+                     failure:fail];
+}
+
 @end

@@ -11,6 +11,7 @@
 @interface PLCPlace : NSObject
 
 @property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *address;
 @property (nonatomic, strong) NSString *imageURL;
 
 @end
