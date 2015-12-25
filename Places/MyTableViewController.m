@@ -111,6 +111,7 @@
         requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
         [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             UIImage *img = responseObject;
+            [cell.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
             [cell.imageView setImage:img];
             cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
 
