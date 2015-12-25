@@ -76,8 +76,6 @@ NSString *const PLCGoogleAPIKey = @"AIzaSyBhpEhL8vvERVuY9ynrHuElB7kEKdWyiHI";
     NSDictionary *params = @{
                              @"key": PLCGoogleAPIKey,
                              @"query": keyword
-//                             @"location": stringFromCoordinate(location),
-//                             @"radius": @(1000)
                              };
     
     void(^success)(AFHTTPRequestOperation *, id) =
@@ -85,7 +83,7 @@ NSString *const PLCGoogleAPIKey = @"AIzaSyBhpEhL8vvERVuY9ynrHuElB7kEKdWyiHI";
         NSMutableArray *placesModels = [NSMutableArray new];
         
         NSString *responseStatus = responseObject[@"status"];
-        
+        NSLog(@"RESPONSE:\n%@", responseObject);
         if ([responseStatus isEqualToString:@"OK"]) {
             NSLog(@"JSON:\n%@", responseObject);
             NSArray *results = responseObject[@"results"];

@@ -29,8 +29,6 @@ NSString *const APIKey = @"AIzaSyBhpEhL8vvERVuY9ynrHuElB7kEKdWyiHI";
         return result;
     }
     
-    NSLog(@"LOLO");
-    
     NSDictionary *photo = photos.firstObject;
     NSString *photoRef = photo[@"photo_reference"] ? : @"";
     if (![photoRef isEqualToString:@""]) {
