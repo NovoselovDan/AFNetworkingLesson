@@ -58,20 +58,20 @@
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="LIb-2R-3a1" secondAttribute="bottom" constant="-3" id="6CB-bJ-5Ov"/>
-                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="leading" secondItem="LIb-2R-3a1" secondAttribute="trailing" constant="8" id="6iA-l1-wKK"/>
-                                        <constraint firstAttribute="trailing" secondItem="Dyi-hZ-vEv" secondAttribute="trailing" constant="8" id="7qj-uA-cQ3"/>
+                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="bottom" secondItem="i4Y-45-4ZF" secondAttribute="bottomMargin" id="99t-Qe-DH7"/>
                                         <constraint firstItem="LIb-2R-3a1" firstAttribute="top" secondItem="i4Y-45-4ZF" secondAttribute="topMargin" constant="-3" id="H2t-q5-2nZ"/>
-                                        <constraint firstItem="A52-fm-Kgl" firstAttribute="leading" secondItem="LIb-2R-3a1" secondAttribute="trailing" constant="8" id="Q5D-sG-bjM"/>
-                                        <constraint firstAttribute="trailing" secondItem="A52-fm-Kgl" secondAttribute="trailing" constant="8" id="eAi-N7-I8v"/>
+                                        <constraint firstItem="A52-fm-Kgl" firstAttribute="leading" secondItem="LIb-2R-3a1" secondAttribute="trailing" constant="8" id="LdV-Z0-xKB"/>
+                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="leading" secondItem="LIb-2R-3a1" secondAttribute="trailing" constant="8" id="P9G-rS-qtN"/>
+                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="trailing" secondItem="i4Y-45-4ZF" secondAttribute="trailingMargin" id="RGd-bQ-PKI"/>
+                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="top" secondItem="A52-fm-Kgl" secondAttribute="bottom" constant="2" id="V4s-GM-slB"/>
+                                        <constraint firstItem="A52-fm-Kgl" firstAttribute="trailing" secondItem="i4Y-45-4ZF" secondAttribute="trailingMargin" id="jqX-DU-jdc"/>
                                         <constraint firstItem="LIb-2R-3a1" firstAttribute="leading" secondItem="i4Y-45-4ZF" secondAttribute="leadingMargin" id="pqY-3s-O7i"/>
-                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="bottom" secondItem="i4Y-45-4ZF" secondAttribute="bottomMargin" id="riC-vw-A6v"/>
-                                        <constraint firstItem="Dyi-hZ-vEv" firstAttribute="top" secondItem="A52-fm-Kgl" secondAttribute="bottom" constant="2" id="vv3-SA-YBZ"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="addressLabel" destination="Dyi-hZ-vEv" id="UCj-ag-f2u"/>
-                                    <outlet property="photoImageView" destination="LIb-2R-3a1" id="wpR-IV-fAD"/>
+                                    <outlet property="photoImageView" destination="LIb-2R-3a1" id="TzV-ow-uU0"/>
                                     <outlet property="titleLabel" destination="A52-fm-Kgl" id="lO3-ri-zOA"/>
                                 </connections>
                             </tableViewCell>

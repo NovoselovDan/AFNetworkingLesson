@@ -106,22 +106,24 @@
     cell.addressLabel.text = place.address;
 //    [cell.imageView setImageWithURL:[NSURL URLWithString:place.imageURL] placeholderImage:[UIImage imageNamed:@"no_photo.jpg"]];
     
+    cell.photoImageView.clipsToBounds = YES;
     if (place.imageURL) {
         AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[[NSURLRequest alloc] initWithURL:[NSURL URLWithString:place.imageURL]]];
         requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
         [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             UIImage *img = responseObject;
-            [cell.imageView setTranslatesAutoresizingMaskIntoConstraints:NO];
-            [cell.imageView setImage:img];
-            cell.imageView.contentMode = UIViewContentModeScaleAspectFit;
+            [cell.photoImageView setTranslatesAutoresizingMaskIntoConstraints:NO];
+            [cell.photoImageView setImage:img];
+            cell.photoImageView.contentMode = UIViewContentModeScaleAspectFill;
 
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Image error: %@", error);
         }];
         [requestOperation start];
     } else {
-        [cell.imageView setImage:[UIImage imageNamed:@"no_photo.jpg"]];
+        [cell.photoImageView setImage:[UIImage imageNamed:@"no_photo.jpg"]];
     }
+
     
     return cell;
 }
